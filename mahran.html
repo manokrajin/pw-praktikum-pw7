@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .dark-mode {
+        background-color: black;
+        color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Mahran Radifan Zhafir tes Dropdown Button</h1>
+<!-- Large button groups (default and split) -->
+
+  
+        <select id="drop1" onchange="giveSelection(this.value)">
+            <option value="medan">Sumatera Utara</option>
+            <option value="jakarta">Jakarta</option>
+            <option value="aceh">Aceh</option>
+        </select>
+
+    
+        
+        <select id="drop2" onchange="resultfun()" >
+            <option data-option="medan">Medan</option>
+            <option data-option="medan">Kabupaten Asahan</option>
+            <option data-option="medan">Kabupaten Batu Bara</option>
+            <option data-option="medan">Dairi</option>
+            <option data-option="medan">Deli Serdang</option>
+            <option data-option="jakarta">Jakarta Utara</option>
+            <option data-option="jakarta">Jakarta Selatan</option>
+            <option data-option="jakarta">Jakarta Timur</option>
+            <option data-option="jakarta">Jakarta Barat</option>
+            <option data-option="jakarta">Jakarta Tenggara</option>
+            <option data-option="aceh">Banda Aceh</option>
+            <option data-option="aceh">Bireuen</option>
+            <option data-option="aceh">Kuta Alam</option>
+            <option data-option="aceh">Langsa</option>
+            <option data-option="aceh">Peudada</option>
+        </select>
+        <p class="font-medium" id="result">pilih Provinsi</p>
+        <button onclick="dark()">Toggle dark mode</button>
+    <script>
+        var drop1 = document.querySelector('#drop1');
+        var drop2 = document.querySelector('#drop2');
+        var options2 = drop2.querySelectorAll('option');
+        const result = document.querySelector('#result');
+    
+        function giveSelection(dropValue) {
+            drop2.innerHTML = '';
+            for(var i = 0; i < options2.length; i++) {
+                if(options2[i].dataset.option === dropValue) {
+                drop2.appendChild(options2[i]);
+                }
+            }
+        }
+        function resultfun(){
+            result.innerText = `pada Provinsi ${drop1.value} ada Kota ${drop2.value}`;
+        }
+        function dark() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    
+    giveSelection(drop1.value);
+    </script>
+</body>
